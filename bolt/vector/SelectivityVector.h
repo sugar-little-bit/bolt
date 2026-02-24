@@ -112,6 +112,10 @@ class SelectivityVector {
     bits::setBit(bits_.data(), idx, valid);
     allSelected_.reset();
   }
+  
+  const uint64_t* getBitData() const {
+    return bits_.data();
+  }
 
   /**
    * If range is not empty, set a range of values to valid from [start, end).
