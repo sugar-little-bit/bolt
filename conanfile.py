@@ -133,7 +133,7 @@ class BoltConan(ConanFile):
 
     build_policy = "missing"
 
-    scm_url = "https://github.com/bytedance/bolt.git"
+    scm_url = "https://github.com/sugar-little-bit/bolt.git"
 
     def source(self):
         git = scm.Git(self)
