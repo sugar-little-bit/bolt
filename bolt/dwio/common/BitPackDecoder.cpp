@@ -29,7 +29,7 @@
  */
 
 #include "bolt/dwio/common/BitPackDecoder.h"
-#if defined(__ARM_FEATURE_SVE) && defined(aarch64)
+#if defined(__ARM_FEATURE_SVE) && defined(__aarch64__)
 #include <arm_sve.h>
 #endif
 namespace bytedance::bolt::dwio::common {
@@ -194,7 +194,7 @@ int32_t decode1To24(
 
 #endif
 
-#if defined(__ARM_FEATURE_SVE) && defined(__aarch64__) && SVE_BITS == 256
+#if defined(__ARM_FEATURE_SVE) && defined(__ARM_FEATURE_SVE2) && defined(__aarch64__) && SVE_BITS == 256
 
 namespace {
 
@@ -464,7 +464,7 @@ void unpack(
   }
 #endif
 
-#if defined(__ARM_FEATURE_SVE) && defined(__aarch64__) && SVE_BITS == 256
+#if defined(__ARM_FEATURE_SVE) && defined(__ARM_FEATURE_SVE2) && defined(__aarch64__) && SVE_BITS == 256
   // Use SVE for specific widths.
   switch (bitWidth) {
     WIDTH_CASE_SVE(1);
