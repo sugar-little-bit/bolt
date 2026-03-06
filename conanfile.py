@@ -422,23 +422,23 @@ class BoltConan(ConanFile):
         if str(self.settings.arch) in ["armv8", "arm"]:
             if sve2_supported:
                 # Support CRC & NEON & SVE2 on ARMv8
-                flags = f"{self.BOLT_GLOABL_FLAGS} -march=armv8.3-a+sve2-bitperm -msve-vector-bits=256 -DSVE_BITS=256"
+                flags = f"{self.BOLT_GLOBAL_FLAGS} -march=armv8.3-a+sve2-bitperm -msve-vector-bits=256 -DSVE_BITS=256"
             elif sve_supported:
                 # Support CRC & NEON & SVE on ARMv8
-                flags = f"{self.BOLT_GLOABL_FLAGS} -march=armv8.3-a+sve -msve-vector-bits=256 -DSVE_BITS=256"
+                flags = f"{self.BOLT_GLOBAL_FLAGS} -march=armv8.3-a+sve -msve-vector-bits=256 -DSVE_BITS=256"
             else:
                 # Support CRC & NEON on ARMv8
-                flags = f"{self.BOLT_GLOABL_FLAGS} -march=armv8.3-a"
+                flags = f"{self.BOLT_GLOBAL_FLAGS} -march=armv8.3-a"
             tc.cache_variables["CMAKE_CXX_FLAGS"] = flags
             tc.cache_variables["CMAKE_C_FLAGS"] = flags
         elif str(self.settings.arch) in ["armv9"]:
             # gcc 12+ https://www.phoronix.com/news/GCC-12-ARMv9-march-armv9-a
             if sve2_supported:
-                flags = f"{self.BOLT_GLOABL_FLAGS} -march=armv9-a+sve2-bitperm -msve-vector-bits=256 -DSVE_BITS=256"
+                flags = f"{self.BOLT_GLOBAL_FLAGS} -march=armv9-a+sve2-bitperm -msve-vector-bits=256 -DSVE_BITS=256"
             elif sve_supported:
-                flags = f"{self.BOLT_GLOABL_FLAGS} -march=armv9-a+sve -msve-vector-bits=256 -DSVE_BITS=256"
+                flags = f"{self.BOLT_GLOBAL_FLAGS} -march=armv9-a+sve -msve-vector-bits=256 -DSVE_BITS=256"
             else:
-                flags = f"{self.BOLT_GLOABL_FLAGS} -march=armv9-a"
+                flags = f"{self.BOLT_GLOBAL_FLAGS} -march=armv9-a"
             tc.cache_variables["CMAKE_CXX_FLAGS"] = flags
             tc.cache_variables["CMAKE_C_FLAGS"] = flags
         if (
